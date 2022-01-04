@@ -1,3 +1,8 @@
+# UPDATES 
+2022-01-04
+React Router was updated to V6  for React 17
+https://reactrouter.com/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
