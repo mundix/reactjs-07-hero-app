@@ -7,11 +7,12 @@ import { MarvelScreen } from '../components/marvel/MarvelScreen';
 import { DcScreen } from '../components/dc/DcScreen';
 import { LoginScreen } from '../components/login/LoginScreen';
 import { SearchScreen } from '../components/search/SearchScreen';
+import { Navbar } from '../components/ui/NavBar';
 
 export const AppRouter = () => {
    return (
       <BrowserRouter>
-         <h1>Welcome to React Router!</h1>
+         <Navbar/>
          <Routes>
             <Route path="/" element={<MarvelScreen />} />
             <Route path="/marvel" element={<MarvelScreen />} />
