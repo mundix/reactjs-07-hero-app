@@ -7,8 +7,6 @@ export const HeroList = ( { publisher } ) => {
 
    return (
       <>
-         <h1>Hero List - {publisher}</h1>
-
          <ul>
             {
                heroes.map( (hero, index) => (
