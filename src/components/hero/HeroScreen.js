@@ -1,14 +1,25 @@
+import { useMemo, useState } from "react";
 import { Navigate, useParams, useNavigate } from "react-router-dom"
 import { getHeroById } from '../../selectors/getHeroById';
 
 export const HeroScreen = () => {
 
+   // Demostrando que la funcion getHeroById se llama cuando se cambia un estado del componente  varias veces
+   // Para esto necesitamos usar el useMemo para evitar estas llamadas si no hay valores nuevo,
+   // Esto no es useEffect, 
+   const [counter, setCounter] = useState(0);
+
    const navigate = useNavigate();
 
    // Esto es nuevo 
-   const params = useParams();
+   // const params = useParams();
+   const { heroeId } = useParams();
    // console.log(params.heroeId);
-   const hero = getHeroById(params.heroeId);
+   // const hero = getHeroById(params.heroeId);
+   // const hero = getHeroById(heroeId);
+   // Entonces vamos a usar el useMemo para memorizar esta funcion, que si fuera un api hiciera llamadas sin control
+   // Aqui coloco la dependencia , que es lo que cambnia , esto es como el useEffect pero para funciones. 
+   const hero = useMemo(() => getHeroById(heroeId), [heroeId]);
 
    if (!hero) {
       return <Navigate to='/' />
@@ -24,7 +35,8 @@ export const HeroScreen = () => {
    const imagePath = `/assets/${id}.jpg`;
 
    const handleReturn = () => {
-      navigate(-1);
+      // navigate(-1);
+      setCounter(counter + 1);
    }
 
    return (
@@ -51,7 +63,7 @@ export const HeroScreen = () => {
                className="btn btn-outline-primary"
                onClick={() => handleReturn()}
             >
-               Regresar
+               Regresar {counter}
             </button>
 
          </div>

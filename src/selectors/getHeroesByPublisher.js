@@ -1,7 +1,7 @@
 import { heroes } from '../data/heroes';
 
 export const getHeroesByPublisher = ( publisher ) => {
-
+   console.log('get Heroes by Publisher called');
    const validPublishers = ['DC Comics', 'Marvel Comics'];
 
    if(!validPublishers.includes(publisher)) {
