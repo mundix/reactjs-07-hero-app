@@ -16,7 +16,14 @@ export const HeroCard = ({
          <div className="card">
             
             <div className="row no-gutters">
-               <img src={imagePath} className="card-img-top" alt=""/>
+               <div className="col-md-04">
+                  <img src={imagePath} className="card-img-top" alt=""/>
+               </div>
+               <div className="col-md-8">
+                  <div className="card-body">
+                     
+                  </div>
+               </div>
             </div>
 
          </div>
