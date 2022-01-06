@@ -21,7 +21,7 @@ export const SearchScreen = () => {
    });
 
    const { searchText } = formValues;
-   const heroesFiltered = gtHeroesByName('Algo por Aqui');
+   const heroesFiltered = gtHeroesByName(q);
 
    const handleSearch = (e) => {
       e.preventDefault();
