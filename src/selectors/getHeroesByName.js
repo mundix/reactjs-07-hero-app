@@ -1,6 +1,9 @@
 import { heroes } from '../data/heroes';
 
-export const gtHeroesByName = (name = '') => {
+export const getHeroesByName = (name = '') => {
+   
+   console.log('get heroes by name');
+
    if (name.length === 0) {
       return [];
    }

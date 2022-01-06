@@ -2,8 +2,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import queryString from 'query-string';
 
 import { useForm } from "../../hooks/useForm";
-import { gtHeroesByName } from '../../selectors/gtHeroesByName';
+import { getHeroesByName } from '../../selectors/getHeroesByName';
 import { HeroCard } from '../hero/HeroCard';
+import { useMemo } from "react";
 
 export const SearchScreen = () => {
 
@@ -12,8 +13,8 @@ export const SearchScreen = () => {
 
    console.log(location.search);
    // const query = queryString.parse(location.search);
-   const { q = '' } = queryString.parse(location.search); //Estoy buscando 'q' de query 
-   // console.log(q);
+   //Estoy buscando 'q' de query 
+   const { q = '' } = queryString.parse(location.search);
 
    const [formValues, handleInputChange] = useForm({
       // searchText: ''
@@ -21,7 +22,7 @@ export const SearchScreen = () => {
    });
 
    const { searchText } = formValues;
-   const heroesFiltered = gtHeroesByName(q);
+   const heroesFiltered = useMemo(() => getHeroesByName(q), [q]);
 
    const handleSearch = (e) => {
       e.preventDefault();
@@ -59,8 +60,8 @@ export const SearchScreen = () => {
             </div>
             <div className="col-7">
                {
-                  (q === '') ? <div className="alert alert-info">Buscar un héroe</div> : 
-                  (heroesFiltered.length === 0) && <div className="alert alert-danger">No hay resoltados con: {q}</div>
+                  (q === '') ? <div className="alert alert-info">Buscar un héroe</div> :
+                     (heroesFiltered.length === 0) && <div className="alert alert-danger">No hay resoltados con: {q}</div>
                }
                {
                   heroesFiltered.map(hero => (
