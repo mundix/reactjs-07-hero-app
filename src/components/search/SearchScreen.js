@@ -1,21 +1,31 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import queryString from 'query-string';
+
 import { useForm } from "../../hooks/useForm";
 import { gtHeroesByName } from '../../selectors/gtHeroesByName';
 import { HeroCard } from '../hero/HeroCard';
 
 export const SearchScreen = () => {
 
+   const navigate = useNavigate();
+   const location = useLocation();
+
+   console.log(location.search);
+   // const query = queryString.parse(location.search);
+   const { q = '' } = queryString.parse(location.search); //Estoy buscando 'q' de query 
+   // console.log(q);
+
    const [formValues, handleInputChange] = useForm({
-      searchText: ''
+      // searchText: ''
+      searchText: q
    });
 
    const { searchText } = formValues;
    const heroesFiltered = gtHeroesByName('Algo por Aqui');
-   const navigate = useNavigate();
 
    const handleSearch = (e) => {
       e.preventDefault();
-      console.log(searchText);
+      // console.log(searchText);
       navigate(`?q=${searchText}`);
    }
 
