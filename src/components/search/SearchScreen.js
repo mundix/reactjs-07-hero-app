@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import { gtHeroesByName } from '../../selectors/gtHeroesByName';
 import { HeroCard } from '../hero/HeroCard';
@@ -10,11 +11,12 @@ export const SearchScreen = () => {
 
    const { searchText } = formValues;
    const heroesFiltered = gtHeroesByName('Algo por Aqui');
-
+   const navigate = useNavigate();
 
    const handleSearch = (e) => {
       e.preventDefault();
       console.log(searchText);
+      navigate(`?q=${searchText}`);
    }
 
    return (
