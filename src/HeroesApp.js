@@ -8,7 +8,7 @@ export const HeroesApp = () => {
       name: 'Edmundo',
       logged: true
    }
-   useReducer();
+   const {state, dispatch} = useReducer();
    return (
       <AuthContext.Provider value={user}>
          <AppRouter />
