@@ -1,9 +1,16 @@
+import { useReducer } from "react"
 import { AuthContext } from "./auth/authContext"
 import { AppRouter } from "./routers/AppRouter"
 
 export const HeroesApp = () => {
+
+   const user = {
+      name: 'Edmundo',
+      logged: true
+   }
+   useReducer();
    return (
-      <AuthContext.Provider>
+      <AuthContext.Provider value={user}>
          <AppRouter />
       </AuthContext.Provider>
    )
