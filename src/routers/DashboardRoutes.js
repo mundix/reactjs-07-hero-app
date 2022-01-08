@@ -6,6 +6,8 @@ import { SearchScreen } from '../components/search/SearchScreen';
 import { HeroScreen } from '../components/hero/HeroScreen';
 
 export const DashboardRoutes = () => {
+
+
    return (
       <>
          <Navbar />
