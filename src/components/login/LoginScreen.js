@@ -14,18 +14,18 @@ export const LoginScreen = () => {
    const navigate = useNavigate();
 
    const [value, handleInputChange] = useForm({
-      email: '',
+      name: '',
       password: ''
    });
 
-   const { email, password } = value;
+   const { name, password } = value;
 
    const handleLogin = (e) => {
       e.preventDefault();
       const action = {
          type: types.login,
          payload: {
-            name: email
+            name
          }
       }
 
@@ -44,12 +44,12 @@ export const LoginScreen = () => {
          <div className="container">
             <form onSubmit={(e) => handleLogin(e)}>
                <div className="mb-3 col-4">
-                  <label  className="form-label">Email address</label>
+                  <label  className="form-label">Name</label>
                   <input 
-                     type="email" 
+                     type="text" 
                      className="form-control" 
-                     name="email"
-                     value={email}
+                     name="name"
+                     value={name}
                      onChange={handleInputChange}
                      autoComplete="off"
                       />
