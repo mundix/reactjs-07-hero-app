@@ -9,7 +9,7 @@ import { AuthContext } from "../../auth/authContext";
 export const LoginScreen = () => {
 
 
-   const { dispatch} = useContext(AuthContext); //use context devuelve un dispatch 
+   const { dispatch } = useContext(AuthContext); //use context devuelve un dispatch 
 
    const navigate = useNavigate();
 
@@ -30,7 +30,10 @@ export const LoginScreen = () => {
       }
 
       dispatch(action);
-      navigate('/marvel', {
+
+      const lastPath = localStorage.getItem('lastPath') || '/marvel';
+
+      navigate(lastPath, {
          replace: true
       });
    }
@@ -44,31 +47,31 @@ export const LoginScreen = () => {
          <div className="container">
             <form onSubmit={(e) => handleLogin(e)}>
                <div className="mb-3 col-4">
-                  <label  className="form-label">Name</label>
-                  <input 
-                     type="text" 
-                     className="form-control" 
+                  <label className="form-label">Name</label>
+                  <input
+                     type="text"
+                     className="form-control"
                      name="name"
                      value={name}
                      onChange={handleInputChange}
                      autoComplete="off"
-                      />
+                  />
                </div>
                <div className="mb-3 col-4">
-                  <label  className="form-label">Password</label>
-                  <input 
-                     type="password" 
-                     className="form-control" 
+                  <label className="form-label">Password</label>
+                  <input
+                     type="password"
+                     className="form-control"
                      name="password"
                      value={password}
                      autoComplete="off"
                      onChange={handleInputChange}
-                     />
+                  />
                </div>
-               <button 
-                  type="submit" 
+               <button
+                  type="submit"
                   className="btn btn-primary">
-                     Submit
+                  Submit
                </button>
             </form>
          </div>
